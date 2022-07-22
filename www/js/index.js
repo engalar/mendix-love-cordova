@@ -20,7 +20,15 @@
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 document.addEventListener('deviceready', onDeviceReady, false);
-
+window.addEventListener('message', function (event) {
+    //event.data获取传过来的数据
+    if (event.data == 'scan') {
+        scanBarcode(result => {
+            var frame = document.getElementById('your-frame-id');
+            frame.contentWindow.postMessage(result, '*');
+        });
+    }
+});
 function onDeviceReady() {
     // Cordova is now initialized. Have fun!
 
@@ -28,14 +36,17 @@ function onDeviceReady() {
     document.getElementById('deviceready').classList.add('ready');
 }
 
-function scanBarcode() {
-    debugger
+function scanBarcode(callback) {
     cordova.plugins.barcodeScanner.scan(
         function (result) {
-            alert("We got a barcode\n" +
-                "Result: " + result.text + "\n" +
-                "Format: " + result.format + "\n" +
-                "Cancelled: " + result.cancelled);
+            if (callback) {
+                callback(result);
+            } else {
+                alert("We got a barcode\n" +
+                    "Result: " + result.text + "\n" +
+                    "Format: " + result.format + "\n" +
+                    "Cancelled: " + result.cancelled);
+            }
         },
         function (error) {
             alert("Scanning failed: " + error);

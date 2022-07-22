@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "emulate:android": "cordova emulate android",
+    "real:android": "cordova run android",
     "build": "cordova build"
   },
   "keywords": [
@@ -14,11 +15,17 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "devDependencies": {
-    "cordova-android": "^10.1.2"
+    "cordova-android": "^10.1.2",
+    "phonegap-plugin-barcodescanner": "^8.1.0"
   },
   "cordova": {
     "platforms": [
       "android"
-    ]
+    ],
+    "plugins": {
+      "phonegap-plugin-barcodescanner": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      }
+    }
   }
 }

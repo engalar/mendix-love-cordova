@@ -29,15 +29,30 @@ script-src * 'self' 'unsafe-inline' 'unsafe-eval';">
     <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="css/index.css">
     <title>Hello World</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 </head>
 
 <body>
     <div class="app">
-        <span>v2</span>
-        <iframe id="your-frame-id" src="http://192.168.10.6:8080/"></iframe>
+        <h1>Apache Cordova</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+        <span>v3</span>
+        <div id="MyLittleBrowser" style="width: 200px; height: 200px; border: 1px solid #000; overflow: scroll;"></div>
+        <script>
+            $("#MyLittleBrowser").load("https://www.baidu.com/");
+        </script>
     </div>
+
     <script src="cordova.js"></script>
     <script src="js/index.js"></script>
+    <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+    <script>
+        // VConsole will be exported to `window.VConsole` by default.
+        var vConsole = new window.VConsole();
+    </script>
 </body>
 
 </html>

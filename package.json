@@ -8,6 +8,7 @@
     "emulate:android": "cordova emulate android",
     "real:android": "cordova run android",
     "build": "cordova build",
+    "setup": "cordova platform add android",
     "serve": "node static-server/server.js"
   },
   "keywords": [

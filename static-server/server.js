@@ -14,6 +14,13 @@ app.get('/', function (req, res) {
   res.sendfile(__dirname + "/public/index.html");
 });
 
+app.get('/vconsole.min.js', function (req, res) {
+  console.log(req.headers);
+  res.setHeader('Content-Security-Policy', 'default-src *;')
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.sendfile(__dirname + "/public/vconsole.min.js");
+});
+
 app.listen(8080, '0.0.0.0');
 
 var httpsServer = https.createServer(credentials, app);

@@ -22,6 +22,7 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 window.addEventListener('message', function (event) {
     //event.data获取传过来的数据
+    console.log(event);
     if (event.data == 'scan') {
         scanBarcode(result => {
             var frame = document.getElementById('your-frame-id');
@@ -33,7 +34,7 @@ function onDeviceReady() {
     // Cordova is now initialized. Have fun!
 
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    document.getElementById('deviceready').classList.add('ready');
+    // document.getElementById('deviceready').classList.add('ready');
 }
 
 function scanBarcode(callback) {
@@ -65,4 +66,8 @@ function scanBarcode(callback) {
             disableSuccessBeep: false // iOS and Android
         }
     );
+}
+
+function scan(){
+    scanBarcode();
 }

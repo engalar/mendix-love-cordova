@@ -2,29 +2,25 @@
 <html>
 
 <head>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; 
-    script-src 'self'; 
-    connect-src 'self'; 
-    img-src 'self'; 
-    style-src 'self';
-    font-src 'self';">
-  <script>
-    addEventListener('message', event => {
-      if (event.data.format) {
-        alert(" 扫码结果\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " +
-          result.cancelled);
-      }
-    }); function scan() { window.parent.postMessage('scan', '*'); } </script>
+
 </head>
 
 <body>
   <p>i am in mendix</p>
   <button onclick="scan()">scan bar code</button>
-  <script src="vconsole.min.js"></script>
   <script>
-    // VConsole will be exported to `window.VConsole` by default.
-    var vConsole = new window.VConsole();
-  </script>
+    debugger
+    addEventListener('message', event => {
+      if (event.data.format) {
+        alert(" 扫码结果\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " +
+          result.cancelled);
+      }
+    });
+    function scan() {
+      debugger
+      console.log('scan btn clicked', window.parent);
+      window.parent.postMessage('scan', '*');
+    } </script>
 </body>
 
 </html>

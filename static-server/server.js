@@ -21,7 +21,7 @@ app.get('/vconsole.min.js', function (req, res) {
   res.sendfile(__dirname + "/public/vconsole.min.js");
 });
 
-app.listen(8080, '0.0.0.0');
+app.listen(80, '0.0.0.0');
 
 var httpsServer = https.createServer(credentials, app);
 httpsServer.listen(443, '0.0.0.0');

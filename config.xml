@@ -8,7 +8,7 @@
         Apache Cordova Team
     </author>
     <content src="index.html" />
-    <access origin="https://engalar.github.io/mendix-native-docs/" subdomains="true" />
+    <access origin="*" subdomains="true" />
     <allow-intent href="*" />
     <allow-navigation href="*"/>
 </widget>

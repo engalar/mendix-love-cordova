@@ -22,7 +22,7 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 window.addEventListener('message', function (event) {
     //event.data获取传过来的数据
-    console.log(event);
+    console.log(event.data);
     if (event.data == 'scan') {
         scanBarcode(result => {
             var frame = document.getElementById('your-frame-id');

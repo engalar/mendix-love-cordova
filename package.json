@@ -6,8 +6,13 @@
   "main": "index.js",
   "scripts": {
     "emulate:android": "cordova emulate android",
+    "android:start:hot": "start %LocalAppData%/Android/Sdk/emulator/emulator.exe -netdelay none -netspeed full -studio-params tests/emu.tmp -avd Pixel_2_API_30",
+    "android:start:cold": "start %LocalAppData%/Android/Sdk/emulator/emulator.exe -netdelay none -netspeed full -no-snapshot-load -studio-params tests/emu.tmp -avd Pixel_2_API_30",
+    "android:logcat": "%LocalAppData%/Android/Sdk/platform-tools/adb.exe logcat -T 10 -s *:E",
     "real:android": "cordova run android",
-    "build": "cordova build"
+    "build": "cordova build",
+    "setup": "cordova platform add android",
+    "serve": "node static-server/server.js"
   },
   "keywords": [
     "ecosystem:cordova"
@@ -16,6 +21,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "cordova-android": "^10.1.2",
+    "express": "^4.18.1",
     "phonegap-plugin-barcodescanner": "^8.1.0"
   },
   "cordova": {

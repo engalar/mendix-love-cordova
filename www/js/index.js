@@ -17,25 +17,38 @@
  * under the License.
  */
 
+var frame = document.getElementById('your-frame-id');
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 document.addEventListener('deviceready', onDeviceReady, false);
-
+window.addEventListener('message', function (event) {
+    //event.data获取传过来的数据
+    console.log(event.data);
+    if (event.data == 'scan') {
+        scanBarcode(result => {
+            // alert(frame);
+            frame.contentWindow.postMessage(result, '*');
+        });
+    }
+});
 function onDeviceReady() {
     // Cordova is now initialized. Have fun!
 
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    document.getElementById('deviceready').classList.add('ready');
+    // document.getElementById('deviceready').classList.add('ready');
 }
 
-function scanBarcode() {
-    debugger
+function scanBarcode(callback) {
     cordova.plugins.barcodeScanner.scan(
         function (result) {
-            alert("We got a barcode\n" +
-                "Result: " + result.text + "\n" +
-                "Format: " + result.format + "\n" +
-                "Cancelled: " + result.cancelled);
+            if (callback) {
+                callback(result);
+            } else {
+                alert("We got a barcode\n" +
+                    "Result: " + result.text + "\n" +
+                    "Format: " + result.format + "\n" +
+                    "Cancelled: " + result.cancelled);
+            }
         },
         function (error) {
             alert("Scanning failed: " + error);
@@ -54,4 +67,8 @@ function scanBarcode() {
             disableSuccessBeep: false // iOS and Android
         }
     );
+}
+
+function scan() {
+    scanBarcode();
 }

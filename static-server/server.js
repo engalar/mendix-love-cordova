@@ -9,14 +9,14 @@ var credentials = { key: privateKey, cert: certificate };
 
 app.get('/', function (req, res) {
   console.log(req.headers);
-  res.setHeader('Content-Security-Policy', 'default-src *;')
+  // res.setHeader('Content-Security-Policy', 'default-src *;unsafe-inline;')
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.sendfile(__dirname + "/public/index.html");
 });
 
 app.get('/vconsole.min.js', function (req, res) {
   console.log(req.headers);
-  res.setHeader('Content-Security-Policy', 'default-src *;')
+  // res.setHeader('Content-Security-Policy', 'default-src *;unsafe-inline;')
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.sendfile(__dirname + "/public/vconsole.min.js");
 });

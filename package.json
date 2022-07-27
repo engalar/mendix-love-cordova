@@ -8,7 +8,7 @@
     "emulate:android": "cordova emulate android",
     "android:start:hot": "start %LocalAppData%/Android/Sdk/emulator/emulator.exe -netdelay none -netspeed full -studio-params tests/emu.tmp -avd Pixel_2_API_30",
     "android:start:cold": "start %LocalAppData%/Android/Sdk/emulator/emulator.exe -netdelay none -netspeed full -no-snapshot-load -studio-params tests/emu.tmp -avd Pixel_2_API_30",
-    "android:logcat": "%LocalAppData%/Android/Sdk/platform-tools/adb.exe logcat -T 10",
+    "android:logcat": "%LocalAppData%/Android/Sdk/platform-tools/adb.exe logcat -T 10 -s *:E",
     "real:android": "cordova run android",
     "build": "cordova build",
     "setup": "cordova platform add android",

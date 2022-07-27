@@ -17,6 +17,7 @@
  * under the License.
  */
 
+var frame = document.getElementById('your-frame-id');
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 document.addEventListener('deviceready', onDeviceReady, false);
@@ -25,7 +26,6 @@ window.addEventListener('message', function (event) {
     console.log(event.data);
     if (event.data == 'scan') {
         scanBarcode(result => {
-            var frame = document.getElementById('your-frame-id');
             frame.contentWindow.postMessage(result, '*');
         });
     }
@@ -68,6 +68,6 @@ function scanBarcode(callback) {
     );
 }
 
-function scan(){
+function scan() {
     scanBarcode();
 }

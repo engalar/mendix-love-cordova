@@ -3,7 +3,7 @@
 
 <head>
   <meta http-equiv="Content-Security-Policy"
-    content="default-src * 'unsafe-inline';child-src  http://127.0.0.1:5500;">
+    content="default-src * 'unsafe-inline';child-src http://127.0.0.1:5500;">
 
 </head>
 
@@ -13,6 +13,7 @@
   <script>
     addEventListener('message', event => {
       if (event.data.format) {
+        let result = event.data;
         alert(" 扫码结果\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " +
           result.cancelled);
       }
@@ -23,11 +24,6 @@
       window.parent.postMessage('scan', '*');
     }
     window.onerror = function (msg, url, lineNo, columnNo, error) {
-      console.log(msg);
-      console.log(url);
-      console.log(lineNo);
-      console.log(columnNo);
-      console.log(error);
       alert(msg)
       alert(url)
       alert(lineNo)

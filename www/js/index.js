@@ -26,6 +26,7 @@ window.addEventListener('message', function (event) {
     console.log(event.data);
     if (event.data == 'scan') {
         scanBarcode(result => {
+            // alert(frame);
             frame.contentWindow.postMessage(result, '*');
         });
     }

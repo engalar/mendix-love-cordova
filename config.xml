@@ -7,7 +7,7 @@
     <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
         Apache Cordova Team
     </author>
-    <content src="https://www.baidu.com/" />
+    <content src="http://192.168.10.6:8080/index.html?profile=Responsive" />
     <access origin="*" subdomains="true" />
     <allow-intent href="*" />
     <allow-navigation href="*"/>
